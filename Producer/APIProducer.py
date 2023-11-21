@@ -8,9 +8,8 @@ from confluent_kafka import Producer
 from confluent_kafka.admin import AdminClient, NewTopic
 from datetime import datetime
 
+sys.path.append('/Users/sabri/Desktop/Study /Youcode/Github/Sprint_1/critiques-movies-kafka-memgraph/API') 
 
-# Import Real-Time-Movie-Recommendation-System Folder Relative Path
-sys.path.append('/home/hadoop/Real-Time-Movie-Recommendation-System') 
 
 # Set up Loggin Function
 def setup_producer_logging():
@@ -45,7 +44,7 @@ def produce_to_Topics(movieTopic, reviewTopic, producer_logger):
         producer = Producer({"bootstrap.servers": "localhost:9092"})  # Kafka broker address
 
         # Generate movie data
-        movies_generator = get_movies()
+        movies_generator = get_movie_data()
 
         while True:
             # Fetch the next movie data
