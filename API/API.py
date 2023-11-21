@@ -1,5 +1,8 @@
 from flask import Flask, jsonify, request
 import pandas as pd
+import sys 
+
+sys.path.append('API/RawData') 
 
 app = Flask(__name__)
 
@@ -44,7 +47,7 @@ def get_movie_data():
     # Convert to JSON format
     json_data = merged_data.apply(create_json_entry, axis=1).tolist()
 
-    return jsonify(json_data)
+    yield jsonify(json_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
